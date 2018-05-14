@@ -9,7 +9,7 @@ import App from './components/App';
 const store = createStore(reducer)
 
 render(
-  <Provider store = {store}>
+  <Provider store={store}>
     <App />
   </Provider>, document.getElementById('root')
 );

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-// import Game from './Game.jsx';
+import React from 'react';
 
-class App extends Component {
-  constructor() {
-    super();
-  };
+import { AppBox } from './App.styles';
+import Board from '../Board';
 
-  render() {
-    return <h1>Hello World!</h1>;
-  }
-}
+const App = () => (
+  <AppBox>
+    <Board />
+  </AppBox>
+);
+
 export default App;

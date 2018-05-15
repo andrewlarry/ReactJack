@@ -2,10 +2,11 @@ const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// Creates the index.html that references the hashed file name
+// Creates the index.html that references the hashed file name. You need to point this
+// plugin at a template file because it will not add the "root" div for you. 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// Cleans up old build files in the /dist folder
+// Cleans up old build files in the /dist folder.
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {

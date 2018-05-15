@@ -6,7 +6,8 @@ import {
   stand, 
   playerWins, 
   dealerWins, 
-  draw 
+  draw,
+  reset,
 } from '../../actions';
 
 import CardRow from '../CardRow';
@@ -31,6 +32,7 @@ const mapDispatchToProps = (dispatch) => {
     playerWins: () => dispatch(playerWins()),
     dealerWins: () => dispatch(dealerWins()),
     draw: () => dispatch(draw()),
+    reset: () => dispatch(reset()),
   };
 }
 
@@ -58,6 +60,8 @@ class Board extends Component {
       } else {
         setTimeout(this.props.draw, 1000);
       }
+    } else if (!this.props.game.playerTurn && !this.props.game.winner) {
+      setTimeout(this.props.hit, 1000);
     }
   }
 
@@ -70,6 +74,8 @@ class Board extends Component {
     if (playerScore === 21 && dealerScore === 21) result = 'DRAW';
     else if (playerScore === 21 || dealerScore > 21) result = 'PLAYER';
     else if (dealerScore === 21 || playerScore > 21) result = 'DEALER';
+    else if (dealerScore === playerScore && !this.props.game.playerTurn) result = 'DRAW';
+    else if (dealerScore > playerScore && !this.props.game.playerTurn) result = 'DEALER';
 
     return result;
   }
@@ -112,7 +118,7 @@ class Board extends Component {
           <ControlBox>
             <ScoreHeader>{banner}</ScoreHeader>
             <ButtonBox>
-              <Button onClick={this.props.hit}>Hit</Button>
+              <Button onClick={this.props.reset}>Play Again</Button>
             </ButtonBox>
           </ControlBox>
         </GameBox>
@@ -120,12 +126,12 @@ class Board extends Component {
     } else {
       view = (
         <GameBox>
-          <CardRow player={false} score={this.calculateScore(false)} hand={this.props.game.dealerHand}></CardRow>
+          <CardRow player={!this.props.game.playerTurn} dealer={!this.props.game.playerTurn} score={this.calculateScore(false)} hand={this.props.game.dealerHand}></CardRow>
           <CardRow player score={this.calculateScore(true)} hand={this.props.game.playerHand}></CardRow>
           <ControlBox>
             <ButtonBox>
               <Button onClick={this.props.hit}>Hit</Button>
-              <Button>Stand</Button>
+              <Button onClick={this.props.stand}>Stand</Button>
             </ButtonBox>
           </ControlBox>
         </GameBox>

@@ -38,14 +38,12 @@ export const hit = (state, player) => {
   let card;
   // Player is the event object from a click event. This is a hit from the player. 
   if (typeof player === 'object') {
-    newState.playerTurn = false;
     newState.playerHand = [...state.playerHand]
 
     // Get new card from deck and push to playerHand
     card = dealCard(state.cardCount - 1);
     newState.playerHand.unshift(state.deck[card]);
   } else {
-    newState.playerTurn = true;
     newState.dealerHand = [...state.dealerHand]
 
     // Get new card from deck and push to dealerHand

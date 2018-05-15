@@ -11,12 +11,13 @@ export const StartBox = styled.div`
   height: 20%;
   width: 40%;
   background: #F5F5DC;
-`
+`;
+
 export const Button = styled.button`
   border: 4px solid red;
   border-radius: 8px;
   outline: none;
-  font-size 2em;
+  font-size 2vw;
   color: white;
   height: 40%;
   width: 40%;
@@ -27,7 +28,8 @@ export const Button = styled.button`
     background: white;
     color: red;
   } 
-`
+`;
+
 export const GameBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,9 +40,9 @@ export const GameBox = styled.div`
   border-radius: 4px;
 
   height: 80%;
-  width: 50%;
+  width: 60%;
   background: #F5F5DC;
-`
+`;
 
 export const ControlBox = styled.div`
   display: flex;
@@ -50,16 +52,16 @@ export const ControlBox = styled.div`
   align-items: center;
   height: 25%;
   width: 100%;
-`
+`;
 
 export const ScoreHeader = styled.h1`
   font-size: 2em;
   font-family: 'Arial';
-`
+`;
 
 export const ButtonBox = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 50%;
-`
+  width: 60%;
+`;

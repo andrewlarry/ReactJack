@@ -71,11 +71,20 @@ const game = (state = initialState, action) => {
         ...state,
         ...startGame(state),
       };
+    case 'RESET':
+      return {
+        ...startGame(initialState),
+      };
     case 'HIT':
       return {
         ...state,
         ...hit(state, action.player),
       };
+    case 'STAND':
+      return {
+        ...state,
+        playerTurn: false,
+      }
     case 'PLAYER_WINS':
       return {
         ...state,

@@ -1,10 +1,10 @@
-import { dealCard, rmFromDeck } from './utils';
+import { dealCard, rmFromDeck, startGame, hit, win } from './gameUtils';
 
 const initialState = {
   winner: null,
   playerTurn: null,
   playerHand: [],
-  computerHand: [],
+  dealerHand: [],
   cardCount: 52,
   deck: [
     { path: '2_of_clubs.svg', value: 2 },
@@ -62,24 +62,6 @@ const initialState = {
   ]
 }
 
-function startGame(state) {
-  console.log(state);
-  let newDeck = state.deck.slice(0);
-  const playerHand = [];
-  const computerHand = [];
-  for (let i = 0 ; i < 4; i++) {
-    const card = dealCard(state.cardCount - 1 - i);
-    if (i % 2 === 0) playerHand.push(newDeck[card]);
-    else computerHand.push(newDeck[card]);
-    newDeck = rmFromDeck(card, newDeck);
-  }
-  return {
-    cardCount: 48,
-    deck: newDeck,
-    playerHand,
-    computerHand,
-  }
-}
 
 
 const game = (state = initialState, action) => {
@@ -89,6 +71,26 @@ const game = (state = initialState, action) => {
         ...state,
         ...startGame(state),
       };
+    case 'HIT':
+      return {
+        ...state,
+        ...hit(state, action.player),
+      };
+    case 'PLAYER_WINS':
+      return {
+        ...state,
+        winner: 'PLAYER',
+      };
+    case 'DEALER_WINS':
+      return {
+        ...state,
+        winner: 'DEALER',
+      }
+    case 'DRAW':
+      return {
+        ...state,
+        winner: 'DRAW',
+      }
     default:
       return state;
   }

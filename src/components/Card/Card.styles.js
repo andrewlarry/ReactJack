@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const CardImg = styled.img`
-  max-height: 200px;
-  max-width: 200px;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-height: 175px;
+  max-width: 175px;
 `;

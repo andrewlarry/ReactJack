@@ -18,7 +18,7 @@ export const Button = styled.button`
   outline: none;
   font-size 2em;
   color: white;
-  height: 50%;
+  height: 40%;
   width: 40%;
   background: red;
 
@@ -61,5 +61,5 @@ export const ButtonBox = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 60%;
+  width: 50%;
 `

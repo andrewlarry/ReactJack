@@ -96,7 +96,7 @@ class Board extends Component {
 
   render() {
     const gameState = this.props.game;
-    console.log(gameState.winner);
+
     // Render view in the return
     let view;
 

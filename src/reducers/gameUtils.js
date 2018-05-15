@@ -13,7 +13,6 @@ export const rmFromDeck = (index, deck) => {
 
 // Returns a new object with the new state for cardCount, deck, playerHand, and dealerHand
 export const startGame = (state) => {
-  console.log(state);
   let newDeck = [...state.deck];
   const playerHand = [];
   const dealerHand = [];
